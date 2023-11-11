@@ -4,7 +4,7 @@ import React from 'react';
 // habit card has a title (name of habit) and lists the cue and the reward for each habit
 const HabitCard = ( {habitObj} ) => {
   return (
-    <div>
+    <div id="HabitCard">
         <h1>My Habit: {habitObj['habitName']}</h1>
       <ul>
         <li>Cue: {habitObj['cue']}</li>
