@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const habitController = require('./controller/habitController.js')
+const habitController = require('./controller/habitController.js');
+const userController = require('./controller/userController.js');
 
 const app = express();
 
@@ -19,7 +20,13 @@ app.use('/build', express.static(path.join(__dirname, '../build')));
 app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
+/************************ USERS (sign-up/log-in) *******************************/
+app.post('/signUp', userController.signUp, (req, res) => {
+  console.log('user created222')
+  return res.status(201).send(res.locals.newUser);
+});
 
+/******************************* HABITS *********************************/
 app.post('/addHabit', habitController.addHabit, (req, res) => {
   console.log('added')
   return res.status(201).send('habit created successfully');

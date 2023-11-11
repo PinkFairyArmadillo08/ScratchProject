@@ -6,20 +6,21 @@ const habitController = {};
 habitController.addHabit = (req, res, next) => {
   const {habitName, cue, rewards} = req.body;
 
-try {  Habits.create({
-    habitName,
-    cue,
-    rewards
-  })
-  next()
-}
+  try {  
+    Habits.create({
+      habitName,
+      cue,
+      rewards
+    })
+    next()
+  }
  
-catch(err) {
-  next({
-    error: 'error in addHabit',
-    message: 'cannot create habit'
-  })
-} 
+  catch(err) {
+    next({
+      error: 'error in addHabit',
+      message: 'cannot create habit'
+    })
+  } 
 }
 
 habitController.getHabits = async (req, res, next) => {

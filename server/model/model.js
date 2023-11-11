@@ -13,6 +13,7 @@ mongoose.connect(MONGO_URI, {
 
   const Schema = mongoose.Schema;
 
+  // HABITS MODEL
   // create a schema for habits model
   const habitsSchema = new Schema({
     habitName: String,
@@ -23,7 +24,16 @@ mongoose.connect(MONGO_URI, {
   // create a model for the 'habits' collection 
   const Habits = mongoose.model('habits', habitsSchema);
 
+  // USER MODEL
+  const userSchema = new Schema({
+    userName: {type: String, required: true, unique: true},
+    password: {type: String, required: true}
+  });
+
+  const User = mongoose.model('users', userSchema);
+
   // export Habit model
   module.exports = {
-    Habits
+    Habits,
+    User
   }
