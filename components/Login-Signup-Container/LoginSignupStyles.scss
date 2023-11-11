@@ -1,0 +1,60 @@
+html{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 700px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  background-color: lightgoldenrodyellow;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px lightgray;
+  h1 {
+    text-align: center;
+  }
+  #usernameInput p{
+    margin:0px;
+    color:red;
+    font-size: .5em;
+  }
+  
+  input {
+    margin: 10px;
+    width: 300px;
+    height: 35px;
+    font-size: 1.25em;
+    border-radius: 5px;
+  }
+  .LoginPageButtons {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+  }
+  button {
+    border: none;
+    background-color: lightpink;
+    border-radius: 5px;
+    height: 35px;
+    width: 150px;
+    &:hover {
+      background-color: pink;
+      cursor: pointer;
+    }
+  }
+}
