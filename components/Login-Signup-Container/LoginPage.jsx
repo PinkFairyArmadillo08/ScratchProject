@@ -49,6 +49,7 @@ const LoginPage = () => {
   /*************************RENDER COMPONENT************************************************** */
   return (
     <div className={`Login ${shake}`}>
+      <img id='armadillo' src="https://ih1.redbubble.net/image.1493956700.7211/st,small,507x507-pad,600x600,f8f8f8.jpg" />
       <h1>WELCOME TO HABIT BUILDER</h1>
       {/* conditional render for incorrecly entered login information */}
       {loginSucess ? <p></p> : <p>*Invalid username and password</p>}

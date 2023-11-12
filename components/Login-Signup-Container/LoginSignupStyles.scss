@@ -1,6 +1,12 @@
 @import '/Stylesheets/Style.scss';
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 
+#armadillo {
+  height: 125px;
+  width: auto;
+  margin: none;
+  border-radius: 50px;
+}
 html {
   height: 100vh;
   display: flex;
@@ -70,10 +76,14 @@ body {
   box-shadow: 10px 5px 5px lightgray;
   h1 {
     text-align: center;
-    margin-bottom: 0px;
+    margin: 10px;
+    margin-bottom: 50px;
+    line-height: 50px;
   }
   p {
     margin: 0px;
+    align-self: flex-start;
+    margin-left: 125px;
     color: red;
     font-size: 0.5em;
   }
@@ -93,25 +103,25 @@ body {
 .shake0 {
   animation: shake0 0.4s ease-in-out 0s 2;
 }
-.SignUp{
+.SignUp {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding:30px;
+  padding: 30px;
   height: 500px;
   width: 500px;
   margin-bottom: 10px;
   background-color: $box;
   border-radius: 10px;
   box-shadow: 10px 5px 5px lightgray;
-  h1{
+  h1 {
     align-self: center;
     font-size: 4em;
   }
-  input{
+  input {
     margin-left: 25px;
-    height:30px;
+    height: 30px;
     width: 350px;
     font-size: 1.25em;
   }
@@ -120,7 +130,7 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
-  #cancel{
+  #cancel {
     background-color: lavender;
   }
 }
