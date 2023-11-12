@@ -1,8 +1,11 @@
-html{
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+html {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: Agbalumo;
 }
 
 body {
@@ -10,7 +13,41 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+@keyframes shake0 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes shake1 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .Login {
@@ -27,13 +64,14 @@ body {
   box-shadow: 10px 5px 5px lightgray;
   h1 {
     text-align: center;
+    margin-bottom: 0px;
   }
-  #usernameInput p{
-    margin:0px;
-    color:red;
-    font-size: .5em;
+  #usernameInput p {
+    margin: 0px;
+    color: red;
+    font-size: 0.5em;
   }
-  
+
   input {
     margin: 10px;
     width: 300px;
@@ -44,7 +82,7 @@ body {
   .LoginPageButtons {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
   }
   button {
     border: none;
@@ -52,9 +90,20 @@ body {
     border-radius: 5px;
     height: 35px;
     width: 150px;
+    margin: 10px;
+    font-size: 1em;
+    font-family: monospace;
     &:hover {
       background-color: pink;
+      color:white;
       cursor: pointer;
     }
   }
+}
+
+.shake1 {
+  animation: shake1 0.4s ease-in-out 0s 2;
+}
+.shake0 {
+  animation: shake0 0.4s ease-in-out 0s 2;
 }

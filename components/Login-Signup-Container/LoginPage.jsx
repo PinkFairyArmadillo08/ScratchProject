@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-const verifiedUser = { Mitch: 'Wen' };
-
 const LoginPage = () => {
-  //React-router hook to change paths
-  const navigate = useNavigate();
-
   /***************************STATES*************************************************/
   const [loginSucess, setLoginSucess] = useState(true); //LOGIN STATUS
   const [login, setLogin] = useState({ userName: '', password: '' }); //ENTRY FORM INFO FOR LOGIN
+  const [attempts, setAttempts] = useState(0); //LOGIN ATTEMPTS > FOR LOCK OUT (stretch)
 
+  //React-router hook to change paths
+  const navigate = useNavigate();
+  //varibable to shake login when wrong
+  let shake = loginSucess ? '' : `shake${attempts % 2}`;
   /************************HANDLER FUNCTIONS****************************************/
   //Updating the inputs from userName and password stored as states
   const populateLogin = (event) => {
@@ -20,6 +20,7 @@ const LoginPage = () => {
   //handler function to submit login information
   const loginClick = () => {
     //base case if both fields are empty: do nothing
+    console.log(login.userName == '' || login.password == '');
     if (login.userName == '' || login.password == '') return;
     //POST request to see if user info is correct.
     fetch('/login', {
@@ -32,15 +33,23 @@ const LoginPage = () => {
     })
       //data should come back as boolean
       //if true go to HomePage; false set the loginSucess to false
-      .then((data) => data.json)
+      .then((data) => data.json())
       .then((data) => {
-        data ? navigate('/home') : setLoginSucess(false);
+        if (data) {
+          navigate('/home');
+        } else {
+          setLoginSucess(false);
+          setAttempts(attempts + 1);
+          //clear the input blocks
+          document.getElementById('userName').value = '';
+          document.getElementById('password').value = '';
+        }
       });
   };
 
   /*************************RENDER COMPONENT************************************************** */
   return (
-    <div className="Login">
+    <div className={`Login ${shake}`}>
       <h1>WELCOME TO HABIT BUILDER</h1>
       <div id="usernameInput">
         {/* conditional render for incorrecly entered login information */}
@@ -62,10 +71,10 @@ const LoginPage = () => {
       />
       {/* Buttons to redirect to SignUpPage and HomePage */}
       <div className="LoginPageButtons">
-        <button id="LoginButton" onClick={() => navigate('/signup')}>
+        <button id="SignUpButton" onClick={() => navigate('/signup')}>
           Signup
         </button>
-        <button id="SignupButton" onClick={loginClick}>
+        <button id="LoginButton" onClick={loginClick}>
           Login
         </button>
       </div>
