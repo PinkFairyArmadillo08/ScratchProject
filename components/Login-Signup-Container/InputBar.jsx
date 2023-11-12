@@ -1,11 +1,11 @@
 import React from 'react';
 
-const InputBar = ({ id, saveBar, state }) => {
+const InputBar = ({ id, saveBar, state, type }) => {
   return (
     <span>
       <input
         id={id}
-        type="text"
+        type={type}
         placeholder={`${id}`}
         onChange={(event) => saveBar(event, state)}
       />
