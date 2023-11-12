@@ -1,46 +1,49 @@
 import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
+import InputBar from './InputBar.jsx';
 
 const LoginPage = () => {
   /***************************STATES*************************************************/
   const [loginSucess, setLoginSucess] = useState(true); //LOGIN STATUS
-  const [login, setLogin] = useState({ userName: '', password: '' }); //ENTRY FORM INFO FOR LOGIN
+  const [info, setInfo] = useState({ userName: '', password: '' }); //ENTRY FORM INFO FOR LOGIN
   const [attempts, setAttempts] = useState(0); //LOGIN ATTEMPTS > FOR LOCK OUT (stretch)
 
   //React-router hook to change paths
   const navigate = useNavigate();
-  //varibable to shake login when wrong
+  //css class to shake login when wrong
   let shake = loginSucess ? '' : `shake${attempts % 2}`;
+
   /************************HANDLER FUNCTIONS****************************************/
-  //Updating the inputs from userName and password stored as states
-  const populateLogin = (event) => {
-    setLogin(Object.assign(login, { [event.target.id]: event.target.value }));
+  //saving the inputs values to be associated states properties to be invoked 'onChange'
+  //@Params {event} - event   :input bar event
+  //@Params {object} - state  :the state object in which the input bar will update
+  const saveBar = (event, state) => {
+    setInfo(Object.assign(state, { [event.target.id]: event.target.value }));
   };
 
-  //handler function to submit login information
+  //handler function to submit login information to server
   const loginClick = () => {
-    //base case if both fields are empty: do nothing
-    console.log(login.userName == '' || login.password == '');
-    if (login.userName == '' || login.password == '') return;
+    //base case if either fields are empty: do nothing
+    if (info.userName == '' || info.password == '') return;
     //POST request to see if user info is correct.
     fetch('/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        userName: login.userName,
-        password: login.password,
+        userName: info.userName,
+        password: info.password,
       }),
     })
-      //data should come back as boolean
-      //if true go to HomePage; false set the loginSucess to false
+      //expected data value to be boolean
       .then((data) => data.json())
       .then((data) => {
+        //if true go to HomePage;
         if (data) {
           navigate('/home');
+          //false set the loginSucess to false and clear the input fields
         } else {
           setLoginSucess(false);
           setAttempts(attempts + 1);
-          //clear the input blocks
           document.getElementById('userName').value = '';
           document.getElementById('password').value = '';
         }
@@ -51,24 +54,12 @@ const LoginPage = () => {
   return (
     <div className={`Login ${shake}`}>
       <h1>WELCOME TO HABIT BUILDER</h1>
-      <div id="usernameInput">
-        {/* conditional render for incorrecly entered login information */}
-        {loginSucess ? <p></p> : <p>*Invalid username and password</p>}
-        {/* USERNAME INPUTBAR */}
-        <input
-          id="userName"
-          type="text"
-          placeholder="username"
-          onChange={(e) => populateLogin(e)}
-        />
-      </div>
+      {/* conditional render for incorrecly entered login information */}
+      {loginSucess ? <p></p> : <p>*Invalid username and password</p>}
+      {/* USERNAME INPUTBAR */}
+      <InputBar id="userName" saveBar={saveBar} state={info} type="text" />
       {/* PASSWORD INPUT BAR */}
-      <input
-        id="password"
-        type="password"
-        placeholder="password"
-        onChange={(e) => populateLogin(e)}
-      />
+      <InputBar id="password" saveBar={saveBar} state={info} type="password" />
       {/* Buttons to redirect to SignUpPage and HomePage */}
       <div className="LoginPageButtons">
         <button id="SignUpButton" onClick={() => navigate('/signup')}>
