@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
-import InputBar from './InputBar.jsx';
+import LoginInput from './LoginInput.jsx';
+import { saveBar } from './globalHandlers.js';
 
 const LoginPage = () => {
   /***************************STATES*************************************************/
@@ -14,15 +15,9 @@ const LoginPage = () => {
   let shake = loginSucess ? '' : `shake${attempts % 2}`;
 
   /************************HANDLER FUNCTIONS****************************************/
-  //saving the inputs values to be associated states properties to be invoked 'onChange'
-  //@Params {event} - event   :input bar event
-  //@Params {object} - state  :the state object in which the input bar will update
-  const saveBar = (event, state) => {
-    setInfo(Object.assign(state, { [event.target.id]: event.target.value }));
-  };
-
+  const infoSaver = saveBar(info, setInfo);
   //handler function to submit login information to server
-  const loginClick = () => {
+  function loginClick() {
     //base case if either fields are empty: do nothing
     if (info.userName == '' || info.password == '') return;
     //POST request to see if user info is correct.
@@ -44,11 +39,12 @@ const LoginPage = () => {
         } else {
           setLoginSucess(false);
           setAttempts(attempts + 1);
+          setInfo({ userName: '', password: '' });
           document.getElementById('userName').value = '';
           document.getElementById('password').value = '';
         }
       });
-  };
+  }
 
   /*************************RENDER COMPONENT************************************************** */
   return (
@@ -57,17 +53,13 @@ const LoginPage = () => {
       {/* conditional render for incorrecly entered login information */}
       {loginSucess ? <p></p> : <p>*Invalid username and password</p>}
       {/* USERNAME INPUTBAR */}
-      <InputBar id="userName" saveBar={saveBar} state={info} type="text" />
+      <LoginInput id="userName" saveBar={infoSaver} type="text" />
       {/* PASSWORD INPUT BAR */}
-      <InputBar id="password" saveBar={saveBar} state={info} type="password" />
+      <LoginInput id="password" saveBar={infoSaver} type="password" />
       {/* Buttons to redirect to SignUpPage and HomePage */}
       <div className="LoginPageButtons">
-        <button id="SignUpButton" onClick={() => navigate('/signup')}>
-          Signup
-        </button>
-        <button id="LoginButton" onClick={loginClick}>
-          Login
-        </button>
+        <button onClick={() => navigate('/signup')}>Signup</button>
+        <button onClick={loginClick}>Login</button>
       </div>
       <Outlet />
     </div>

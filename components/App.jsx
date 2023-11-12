@@ -1,8 +1,13 @@
 import React from 'react';
-import Login from './Login-Signup-Container/Login.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import LoginRoutes from './Login-Signup-Container/LoginRoutes.jsx';
 
 const App = () => {
-  return <Login />;
+  return (
+    <BrowserRouter>
+      <LoginRoutes />
+    </BrowserRouter>
+  );
 };
 
 export default App;

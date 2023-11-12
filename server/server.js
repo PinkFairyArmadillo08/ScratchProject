@@ -19,6 +19,10 @@ app.post('/login', (req, res) => {
   return res.status(200).json(userName == 'Mitch' && password == 'Wen');
 });
 
+app.post('/signup', (req, res) => {
+  const { userName, password } = req.body;
+  return res.status(200).json(true);
+});
 //start up server on PORT
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
