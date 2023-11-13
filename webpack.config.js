@@ -22,6 +22,7 @@ module.exports = {
     },
     //proxies for our development server to route all requests to HTTP://Localhost:3000
     proxy: {
+      '/login': 'http://localhost:3000',
       '/**': 'http://localhost:3000',
     },
   },
