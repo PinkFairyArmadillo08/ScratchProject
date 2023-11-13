@@ -11,6 +11,14 @@
 .addHabitButton {
   align-items: center;
   justify-content: center;
+  width: 150px;
+  height: 75px;
+  background-color: lightseagreen;
+  color: white;
+  margin-bottom: 30px;
+  &:hover {
+    background-color: plum;
+  }
 }
 
 .AddHabitForm {
@@ -71,6 +79,7 @@
   box-shadow: 10px 5px 5px lightgray;
   background-color: $box;
   border-radius: 5px;
+  align-items: center;
   
   p {
     font-family: 'Courier New', Courier, monospace;

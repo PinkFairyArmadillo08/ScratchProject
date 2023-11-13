@@ -5,12 +5,13 @@ import HabitCard from './HabitCard.jsx';
 
 const HomeContainer = () => {
 
-  // const [habits, setHabits] = useState([]);
+  const [habits, setHabits] = useState([]);
   const [popupOpen, setpopupOpen] = useState(false);
   const [newHabit, setNewHabit] = useState({'habitName': '', 'cue': '', 'reward': ''})
 
   // send a fetch to get the habit data from the backend
   // data will be returned as an array of object with the following properties:
+  // sends cookie with username prop
   // habitName, cue, rewards 
   // useEffect(() => {
   //   fetch('/habit/get')
@@ -21,13 +22,32 @@ const HomeContainer = () => {
   // }, [])
 
   // iterate over the habits array (which now contains the habit data) and render a habit card for each object
-  const habits = [{'habitName': 'running', 'cue': 'waking up', 'reward': 'coffee'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}]
+  useEffect(() => {
+    setHabits([
+      {'habitName': 'a', 'cue': 'a', 'reward': 'a'}, {'habitName': 'b', 'cue': 'b', 'reward': 'b'}, {'habitName': 'c', 'cue': 'c', 'reward': 'c'}, {'habitName': 'd', 'cue': 'd', 'reward': 'd'}, {'habitName': 'e', 'cue': 'e', 'reward': 'e'}])
+  }, []) 
+  // setHabits(newHabits);
+  
+  
+  // click  handler that pushes a completed habit to the end of the queue
+  const handleCompleted = (e, i) => {
+    e.preventDefault();
+    console.log(e);
+    let currentCard = habits[i];
+    const updatedHabits = habits.slice(0, i).concat(habits.slice(i + 1).concat(currentCard))
+
+    console.log(updatedHabits);
+    setHabits(updatedHabits);
+
+    //fetch('/habit/update')
+  }
+    
   
   // useEffect(() => {
     const renderingHabits = []
     for (let i = 0; i < habits.length; i++) {
       renderingHabits.push(
-        <HabitCard habitObj={habits[i]} key={i}/>
+        <HabitCard habitObj={habits[i]} key={`Habit position: ${i}`} habitIndex={`${i}`} handleCompleted={handleCompleted} />
       )
     }
   // }, [habits])
@@ -51,6 +71,7 @@ const HomeContainer = () => {
   }
 
   // this function is connected to the submit button on the add habit pop-up form and it sends the new habit data to the backend and closes the form
+  // sends cookie with username prop
   const handleSubmit = () => {
     // sends post request to backend
     console.log('clickedSubmit!')
@@ -63,7 +84,6 @@ const HomeContainer = () => {
     //   body: JSON.stringify(newHabit)
     // }
   }
-
 
   return (
     <div className="Home">
