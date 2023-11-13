@@ -12,8 +12,8 @@ app.use(express.json());
 app.use('/build', express.static(path.join(__dirname, '../build')));
 
 /****************************Require Router *******************************/
-const habitControllerRouter = require('./routes/habit.js');
-const userControllerRouter = require('./routes/user.js');
+const habitControllerRouter = require('./routes/habitRouter.js');
+const userControllerRouter = require('./routes/userRouter.js');
 
 /*********************Main apge load**************************************** */
 //main page get. send them the html file
