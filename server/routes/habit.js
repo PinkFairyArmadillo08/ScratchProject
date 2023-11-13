@@ -10,7 +10,7 @@ router.post('/add', habitController.addHabit, (req, res) => {
 })
 //make sure we can habit data from the database
 router.get('/get', habitController.getHabits, (req, res) => {
-  return res.status(200).json({"user1": res.locals.allHabits});
+  return res.status(200).json({"USER IS HERE": res.locals.allHabits});
 })
 
 

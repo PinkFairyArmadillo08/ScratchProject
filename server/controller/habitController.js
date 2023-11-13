@@ -4,13 +4,16 @@ const { Habits } = models
 const habitController = {};
 
 habitController.addHabit = (req, res, next) => {
-  const {habitName, cue, rewards} = req.body;
+  const {userName, habitName, cue, rewards} = req.body;
   try {  
-    Habits.create({
-      habitName,
-      cue,
-      rewards
-    })
+    Habits.create(
+      {
+          userName,
+          habitName,
+          cue,
+          rewards
+      }
+    )
     next()
   }
  
