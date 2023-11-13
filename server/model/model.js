@@ -30,13 +30,22 @@ mongoose.connect(MONGO_URI, {
   const userSchema = new Schema({
     userName: {type: String, required: true, unique: true},
     password: {type: String, required: true},
+    // habits: expected array of subdocuments from habits collection
     habits: [{ type: Schema.Types.ObjectId, ref: 'habits' }]
   });
   // create a model for the 'users' collection 
   const User = mongoose.model('users', userSchema);
 
+  const sessionSchema = new Schema({
+    cookieId: { type: String, required: true, unique: true },
+    createdAt: { type: Date, expires: 50000, default: Date.now }
+  });
+
+  const Session = mongoose.model('Session', sessionSchema);
+  
   // export Habit model
   module.exports = {
     Habits,
-    User
+    User,
+    Session
   }

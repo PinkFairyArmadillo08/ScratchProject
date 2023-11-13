@@ -1,6 +1,5 @@
 const models = require("../model/model.js");
-const { User } = models;
-const { Habits } = models 
+const { User } = models; 
 
 const userController = {};
 
@@ -22,13 +21,13 @@ userController.getOneUser = async (req, res, next) => {
 //signup function
 userController.signUp = async (req, res, next) => {
   const { userName, password } = req.body;
-  console.log(userName, password);
+  // console.log(userName, password);
   try {
     const newUser = await User.create({
       userName: userName,
       password: password,
+      // habits: expected to return array of subdocs from habits collection with matching userName
     });
-    console.log("newUSer", newUser);
     res.locals.newUser = true;
   } catch (err) {
     next({
@@ -44,6 +43,7 @@ userController.verifyUser = async (req, res, next) => {
   const { userName, password } = req.body;
 
   const userExists = await User.findOne({ userName: userName });
+
   if (!userExists) {
     next({
       error: "this user does not exist in the database",
@@ -52,8 +52,9 @@ userController.verifyUser = async (req, res, next) => {
   } else {
     // check if password given by user, is equal to password in database
     if (userExists.password === password) {
-      console.log("log-in successful");
-      res.locals.userExists = true;
+      // console.log("log-in successful inside verify user middleware");
+      res.locals.userExists = true; 
+      res.locals.userObject = userExists // passing down the userName 
       // redirect to homepage
       return next();
       // if password does not match, send error

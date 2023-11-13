@@ -1,22 +1,33 @@
 const models = require('../model/model.js');
 const { Habits } = models
-
+const { User } = models;
 
 const habitController = {};
+habitController.addHabit = async (req, res, next) => {
+  const {habitName, cue, rewards} = req.body;
 
-habitController.addHabit = (req, res, next) => {
-  const {userName, habitName, cue, rewards} = req.body;
+  // get userName from cookies
+  const userNameFromCookies = req.cookies.userName
 
   try {  
-    Habits.create(
+    const newHabit = await Habits.create(
       {
-          userName,
-          habitName,
-          cue,
-          rewards
+          userName: userNameFromCookies, 
+          habitName: habitName,
+          cue: cue,
+          rewards: rewards
       }
     )
+    // console.log('newHabit: ', newHabit)
+    // find user with matching userName and update its 'habits' property 
+    const habitArr = await Habits.find({userName: userNameFromCookies})
+    // console.log('habitArr ', habitArr);
+    const updatedUser = await User.findOneAndUpdate(
+      { userName: userNameFromCookies }, 
+      { habits: habitArr }
+    )
     next()
+
   }
  
   catch(err) {
@@ -29,9 +40,11 @@ habitController.addHabit = (req, res, next) => {
 
 habitController.getHabits = async (req, res, next) => {
   try {
-    const allHabits = await Habits.find({})
-    console.log('allhabits', allHabits); // returns array of objects
-
+    // get userName from cookies
+    const userNameFromCookies = req.cookies.userName
+    // initialise allHabits and find all habits with matching userName
+    const allHabits = await Habits.find({userName: userNameFromCookies})
+    // save allHabits to res.locals
     res.locals.allHabits = allHabits;
     next()
   }

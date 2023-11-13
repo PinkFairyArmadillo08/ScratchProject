@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = 3000;
 
 //use cors middleware and json parser to make sure we received json formaty
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded())
 
 //make sure we can read static file in the build folder
 app.use('/build', express.static(path.join(__dirname, '../build')));
