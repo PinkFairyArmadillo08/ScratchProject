@@ -5,7 +5,6 @@ const habitController = {};
 
 habitController.addHabit = (req, res, next) => {
   const {habitName, cue, rewards} = req.body;
-
   try {  
     Habits.create({
       habitName,
