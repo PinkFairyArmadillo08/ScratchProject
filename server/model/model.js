@@ -29,7 +29,8 @@ mongoose.connect(MONGO_URI, {
   // create a schema for user model
   const userSchema = new Schema({
     userName: {type: String, required: true, unique: true},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    habits: [{ type: Schema.Types.ObjectId, ref: 'habits' }]
   });
   // create a model for the 'users' collection 
   const User = mongoose.model('users', userSchema);

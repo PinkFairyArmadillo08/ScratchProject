@@ -1,5 +1,6 @@
 const models = require("../model/model.js");
 const { User } = models;
+const { Habits } = models 
 
 const userController = {};
 

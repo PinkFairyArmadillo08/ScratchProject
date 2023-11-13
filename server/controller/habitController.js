@@ -1,10 +1,12 @@
 const models = require('../model/model.js');
 const { Habits } = models
 
+
 const habitController = {};
 
 habitController.addHabit = (req, res, next) => {
   const {userName, habitName, cue, rewards} = req.body;
+
   try {  
     Habits.create(
       {
