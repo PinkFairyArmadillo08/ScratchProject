@@ -6,7 +6,7 @@ import SignUpPage from './SignUpPage.jsx';
 const SignUpContainer = () => {
   /***************************STATES*************************************************/
   const [signUp, setSignUp] = useState({ userName: '', password: '' }); //ENTRY FORM INFO FOR LOGIN
-  const [signUpStatus, setSignUpStatus] = useState(false);
+  const [signUpStatus, setSignUpStatus] = useState(false);// STATUS FOR SUCESSFUL SIGNUP
 
   /*********************************AUXILLARY FUNCTIONS******************************* */
   //@Params {string} - password : string to check
@@ -58,7 +58,7 @@ const SignUpContainer = () => {
       .then((data) => data.json())
       .then((data) => {
         console.log(data);
-        //if true go to HomePage;
+        //if true show success message;
         if (data) {
           setSignUpStatus(true);
         } else console.log('failed');
