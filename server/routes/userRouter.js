@@ -8,9 +8,7 @@ router.get('/:name', userController.getOneUser, (req,res) => {
   return res.status(201).send(res.locals.oneExistingUser);
 })
 //signup username and password
-router.post('/signUp', userController.signUp, (req, res) => {
-  return res.status(201).send(res.locals.newUser);
-});
+
 
 
 module.exports = router;
