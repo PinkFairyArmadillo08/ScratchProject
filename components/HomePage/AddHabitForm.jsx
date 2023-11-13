@@ -7,15 +7,15 @@ const AddHabitForm = ({ handleClick, handleChange, handleSubmit }) => {
       <br></br>
       <button id="closeForm" onClick={handleClick} >Close Form</button>
       <br></br>
-      <label>What habit do you want to build into your routine?</label>
+      <label id="prompt">What habit do you want to build into your routine?</label>
       <br></br>
       <input type="text" name="habitName" placeholder="Habit" onChange={(value) => handleChange(value)}></input>
       <br></br>
-      <label>What will be your cue to start your habit each day?</label>
+      <label id="prompt">What will be your cue to start your habit each day?</label>
       <br></br>
       <input type="text" name="cue" placeholder="Cue" onChange={(value) => handleChange(value)}></input>
       <br></br>
-      <label>What will be your reward for completing your habit?</label>
+      <label id="prompt">What will be your reward for completing your habit?</label>
       <br></br>
       <input type="text" name="reward" placeholder="Reward" onChange={(value) => handleChange(value)}></input>
       <br></br>

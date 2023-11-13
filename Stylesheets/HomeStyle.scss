@@ -1,0 +1,23 @@
+@import '/Stylesheets/Style.scss';
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+input {
+  font-family: 'Courier New', Courier, monospace;
+
+}
+
+#prompt {
+  font-family: 'Courier New', Courier, monospace;
+  color: lightseagreen;
+}
+
+#HabitCard {
+  box-shadow: 10px 5px 5px lightgray;
+  background-color: $box;
+}
+
+#addHabit {
+  background-color: $primary;
+  font-family: 'Courier New', Courier, monospace;
+}
+

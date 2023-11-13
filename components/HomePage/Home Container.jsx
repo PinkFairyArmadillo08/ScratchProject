@@ -13,7 +13,7 @@ const HomeContainer = () => {
   // data will be returned as an array of object with the following properties:
   // habitName, cue, rewards 
   // useEffect(() => {
-  //   fetch('/getHabits')
+  //   fetch('/habit/get')
   //   .then((res) => res.json())
   //   .then((data) => {
   //     setHabits(data);
@@ -55,7 +55,7 @@ const HomeContainer = () => {
     // sends post request to backend
     console.log('clickedSubmit!')
     console.log(newHabit);
-    // fetch('/addHabit'), {
+    // fetch('/habit/add'), {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json' 
