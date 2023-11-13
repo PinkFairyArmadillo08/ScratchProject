@@ -149,3 +149,18 @@ button {
     cursor: pointer;
   }
 }
+
+.SuccessPopup {
+  color: green;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  align-self: center;
+  position: absolute;
+  background-color: white;
+
+  z-index: 4;
+}

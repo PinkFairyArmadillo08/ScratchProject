@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveBar } from './globalHandlers.js';
 import InputBar from './InputBar.jsx';
+import SucessPopup from './sucessPopup.jsx';
 
 const SignUpPage = () => {
   /***************************STATES*************************************************/
@@ -63,7 +64,6 @@ const SignUpPage = () => {
         //if true go to HomePage;
         if (data) {
           setSignUpStatus(true);
-          navigate('/');
         } else console.log('failed');
       })
       .catch((err) => console.log('error occured'));
@@ -72,30 +72,36 @@ const SignUpPage = () => {
   /*************************RENDER COMPONENT************************************************** */
   return (
     <div className={`SignUp`}>
-      <h1>Signing Up</h1>
-      {/* USERNAME INPUT BAR */}
-      <InputBar id="userName" saveBar={signUpInput} type="text" />
-      <ul>
-        <li style={{ color: signupReqs[0] }}>
-          Must be between 3 and 16 characters long.
-        </li>
-      </ul>
-      {/* PASSWORD INPUT BAR */}
-      <InputBar id="password" saveBar={signUpInput} type="password" />
-      <ul>
-        <li style={{ color: signupReqs[1] }}>
-          Must be between 8 and 32 characters long.
-        </li>
-        <li style={{ color: signupReqs[2] }}>
-          Must include at least one number, special character and letter.
-        </li>
-      </ul>
-      <div className="PageButtons">
-        <button id="cancel" onClick={() => navigate('/')}>
-          Cancel
-        </button>
-        <button onClick={createAccount}>Create Account</button>
-      </div>
+      {signUpStatus ? (
+        <SucessPopup />
+      ) : (
+        <>
+          <h1>Signing Up</h1>
+          {/* USERNAME INPUT BAR */}
+          <InputBar id="userName" saveBar={signUpInput} type="text" />
+          <ul>
+            <li style={{ color: signupReqs[0] }}>
+              Must be between 3 and 16 characters long.
+            </li>
+          </ul>
+          {/* PASSWORD INPUT BAR */}
+          <InputBar id="password" saveBar={signUpInput} type="password" />
+          <ul>
+            <li style={{ color: signupReqs[1] }}>
+              Must be between 8 and 32 characters long.
+            </li>
+            <li style={{ color: signupReqs[2] }}>
+              Must include at least one number, special character and letter.
+            </li>
+          </ul>
+          <div className="PageButtons">
+            <button id="cancel" onClick={() => navigate('/')}>
+              Cancel
+            </button>
+            <button onClick={createAccount}>Create Account</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

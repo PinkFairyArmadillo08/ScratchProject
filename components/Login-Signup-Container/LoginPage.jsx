@@ -19,6 +19,7 @@ const LoginPage = () => {
   //handler function to submit login information to server
   function loginClick() {
     //base case if either fields are empty: do nothing
+    console.log(info.userName)
     if (info.userName == '' || info.password == '') return;
     //POST request to see if user info is correct.
     fetch('/login', {
