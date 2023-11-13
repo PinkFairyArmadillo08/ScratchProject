@@ -4,12 +4,16 @@ import React from 'react';
 // habit card has a title (name of habit) and lists the cue and the reward for each habit
 const HabitCard = ( {habitObj} ) => {
   return (
-    <div id="HabitCard">
-        <h1>My Habit: {habitObj['habitName']}</h1>
-      <ul>
-        <li>Cue: {habitObj['cue']}</li>
-        <li>Reward: {habitObj['reward']}</li>
-      </ul>
+    <div className="HabitCard">
+      <div className="section">
+        <h1>My Habit</h1><p>{habitObj['habitName']}</p>
+      </div>
+      <div className="section">
+        <h1>My Cue</h1><p>{habitObj['cue']}</p>
+      </div>
+      <div className="section">
+        <h1>My Reward</h1><p>{habitObj['reward']}</p>
+      </div>
     </div>
   )
 }

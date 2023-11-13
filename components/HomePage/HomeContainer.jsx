@@ -21,7 +21,7 @@ const HomeContainer = () => {
   // }, [])
 
   // iterate over the habits array (which now contains the habit data) and render a habit card for each object
-  const habits = [{'habitName': 'running', 'cue': 'waking up', 'reward': 'coffee'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}]
+  const habits = [{'habitName': 'running', 'cue': 'waking up', 'reward': 'coffee'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}, {'habitName': 'meditation', 'cue': 'lunchtime', 'reward': 'a walk'}]
   
   // useEffect(() => {
     const renderingHabits = []
@@ -66,14 +66,14 @@ const HomeContainer = () => {
 
 
   return (
-    <div>
+    <div className="Home">
       <div>
-        <button id="addHabit" onClick={handleClick}>Add Habit</button>
+        <button className="addHabitButton" onClick={handleClick}>Add Habit</button>
       </div>
       <div> 
         {popupOpen ? <AddHabitForm handleChange={handleChange} handleSubmit={handleSubmit} handleClick={handleClick} /> : null}
       </div>  
-      <div id="HabitCardBox">
+      <div className="HabitCardBox">
         {renderingHabits}
       </div>
     </div>
