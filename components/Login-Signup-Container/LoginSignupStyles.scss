@@ -1,0 +1,166 @@
+@import '/Stylesheets/Style.scss';
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+#armadillo {
+  height: 125px;
+  width: auto;
+  margin: none;
+  border-radius: 50px;
+}
+html {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Agbalumo;
+}
+a {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.5em;
+  color: lightseagreen;
+  &:hover {
+    color: plum;
+  }
+}
+body {
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@keyframes shake0 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes shake1 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.Login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 700px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  background-color: $box;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px lightgray;
+  h1 {
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 50px;
+    line-height: 50px;
+  }
+  p {
+    margin: 0px;
+    align-self: flex-start;
+    margin-left: 125px;
+    color: red;
+    font-size: 0.5em;
+  }
+
+  input {
+    margin: 10px;
+    margin-top: 0px;
+    width: 300px;
+    height: 35px;
+    font-size: 1.25em;
+    border-radius: 5px;
+  }
+}
+.shake1 {
+  animation: shake1 0.4s ease-in-out 0s 2;
+}
+.shake0 {
+  animation: shake0 0.4s ease-in-out 0s 2;
+}
+.SignUp {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 30px;
+  height: 500px;
+  width: 500px;
+  margin-bottom: 10px;
+  background-color: $box;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px lightgray;
+  h1 {
+    align-self: center;
+    font-size: 4em;
+  }
+  input {
+    margin-left: 25px;
+    height: 30px;
+    width: 350px;
+    font-size: 1.25em;
+  }
+}
+.PageButtons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  #cancel {
+    background-color: lavender;
+  }
+}
+button {
+  border: none;
+  background-color: lightpink;
+  border-radius: 5px;
+  height: 35px;
+  width: 150px;
+  margin: 10px;
+  font-size: 1em;
+  font-family: monospace;
+  &:hover {
+    background-color: pink;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.SuccessPopup {
+  color: green;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid red;
+  align-self: center;
+  position: absolute;
+  background-color: white;
+
+  z-index: 4;
+}
