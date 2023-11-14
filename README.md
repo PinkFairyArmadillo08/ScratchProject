@@ -21,8 +21,9 @@ Using the habit loop (cue, habit, reward) our app will allow users to input indi
 # Paths for HTTP requests:
 - signup page = '/signUp'
 - login page = '/login'
-- home page = '/getHabits'
-- add habit form = '/addHabit'
+- home page = '/home'
+- get habits = '/habit/get'
+- add habit form = '/habit/add'
 
 # Variables for Data Structure:
 Login page:
