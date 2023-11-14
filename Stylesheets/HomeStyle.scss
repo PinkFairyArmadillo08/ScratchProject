@@ -1,0 +1,96 @@
+@import '/Stylesheets/Style.scss';
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.addHabitButton {
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 75px;
+  background-color: lightseagreen;
+  color: white;
+  margin-bottom: 30px;
+  &:hover {
+    background-color: plum;
+  }
+}
+
+.AddHabitForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  width: 1100px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  background-color: lightseagreen;
+  // background-color: rgba(32, 178, 171, 0.666);
+  text-align: center;
+
+  input {
+    margin: 10px;
+    margin-top: 0px;
+    width: 300px;
+    height: 35px;
+    font-size: 1.25em;
+    border-radius: 5px;
+  }
+
+  a {
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 250px;
+    text-align: center;
+    font-size: 1em;
+    color: black;
+    &:hover {
+      color: plum;
+    }
+  }
+}
+
+.HabitCardBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 1000px;
+  height: 450px;
+  justify-content: space-evenly;
+  overflow: auto;
+}
+
+.HabitCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 400px;
+  min-width: 300px;
+  box-shadow: 10px 5px 5px lightgray;
+  background-color: $box;
+  border-radius: 5px;
+  align-items: center;
+  
+  p {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80px;
+    text-align: center;
+  }
+}
+
