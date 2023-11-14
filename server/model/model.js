@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGO_URI = 'mongodb+srv://jessica:hahaha@scratch-project-habit-t.d4noeps.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URI = 'placeholder';
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
