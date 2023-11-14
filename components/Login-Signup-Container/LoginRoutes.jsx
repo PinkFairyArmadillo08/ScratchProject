@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import LoginPage from './LoginPage.jsx';
-import SignUpPage from './SignUpPage.jsx';
+import SignUpContainer from './SignUpContainer.jsx';
 import HomeContainer from '../HomePage/HomeContainer.jsx';
 import './LoginSignupStyles.scss';
 import '../../Stylesheets/HomeStyle.scss';
