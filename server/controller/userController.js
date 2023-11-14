@@ -1,5 +1,5 @@
-const models = require("../model/model.js");
-const { User } = models; 
+const models = require('../model/model.js');
+const { User } = models;
 
 const userController = {};
 
@@ -12,8 +12,8 @@ userController.getOneUser = async (req, res, next) => {
     next();
   } catch (err) {
     next({
-      error: "error in getOneUser middleware",
-      message: "cannot get user at the moment",
+      error: 'error in getOneUser middleware',
+      message: 'cannot get user at the moment',
     });
   }
 };
@@ -31,8 +31,8 @@ userController.signUp = async (req, res, next) => {
     res.locals.newUser = true;
   } catch (err) {
     next({
-      error: "error in addHabit",
-      message: "cannot create habit",
+      error: 'error in addHabit',
+      message: 'cannot create habit',
     });
   }
   return next();
@@ -45,24 +45,21 @@ userController.verifyUser = async (req, res, next) => {
   const userExists = await User.findOne({ userName: userName });
 
   if (!userExists) {
-    next({
-      error: "this user does not exist in the database",
-      message: "this user does not exist in the database",
-    });
+    //send false response
+    res.locals.userExists = false;
+    next();
   } else {
     // check if password given by user, is equal to password in database
     if (userExists.password === password) {
       // console.log("log-in successful inside verify user middleware");
-      res.locals.userExists = true; 
-      res.locals.userObject = userExists // passing down the userName 
+      res.locals.userExists = true;
+      res.locals.userObject = userExists; // passing down the userName
       // redirect to homepage
       return next();
       // if password does not match, send error
     } else {
-      return next({
-        error: "incorrect password",
-        message: "incorrect password",
-      });
+      res.locals.userExists = false;
+      return next();
     }
   }
 };

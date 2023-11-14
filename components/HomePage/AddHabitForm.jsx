@@ -16,7 +16,7 @@ const AddHabitForm = ({ handleClick, handleChange, handleSubmit }) => {
       <br></br>
       <label id="prompt"><a>What will be your reward for completing your habit?</a></label>
       <br></br>
-      <input type="text" name="reward" placeholder="Reward" onChange={(value) => handleChange(value)}></input>
+      <input type="text" name="rewards" placeholder="Reward" onChange={(value) => handleChange(value)}></input>
       <br></br>
       <div className="formButtons">
         <button id="submitHabit" onClick={handleSubmit}>Submit New Habit</button>
